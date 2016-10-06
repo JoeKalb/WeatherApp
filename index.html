@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/app/styles/styles.css">
 <!-- endinject -->
 </head>
-
+<!-- creating the controller -->
 <body ng-controller="weatherController as vm">
 <div class="container">
 	<div class="well">
@@ -22,6 +22,7 @@
 	<div class="row">
 		<div class="buttons">
 			<div class="btn-group" role="group">
+				<!-- Each button passes a predetermined place to the API -->
 				<button type="button" class="btn btn-primary" ng-click="vm.showWeather('San Diego')">San Diego</button>
 				<button type="button" class="btn btn-primary" ng-click="vm.showWeather('New York')">New York</button>
 				<button type="button" class="btn btn-primary" ng-click="vm.showWeather('Washingto D.C.')">Washington D.C.</button>
@@ -33,6 +34,7 @@
 	<div class="row">
 		<div class="form-group">
 			<div class="col-sm-11">
+				<!-- Adding in the user input -->
 				<input type="text" class="form-control" ng-model="vm.placeInput">
 			</div>
 			<button type="button" class="btn btn-default" ng-click="vm.showWeather(vm.placeInput)">GO!</button>
@@ -43,24 +45,17 @@
 			<div class="panel panel-default">
 				<div class="planel panel-primary">
 					<div class="panel-heading">City Information</div>
-					<!-- This is where the left side will be displayed -->
+					<!-- This is where the weather will be displayed -->
 					<div class="panel-body" ng-hide="vm.name === ''">
-						
-						<h2 class="text-right"><img src="http://openweathermap.org/img/w/{{vm.icon}}.png" alt="" style="width:10%;height:10%">{{vm.name}}</h2>
+						<h2 class="text-right"><img ng-src='http://openweathermap.org/img/w/{{vm.icon}}.png' alt="Current weather is: {{vm.desc}}" style="width:15%;height:15%">{{vm.name}}</h2>
 						<h4 class="text-right">Lat/Long: {{vm.lat}}, {{vm.long}}</h4>
 						<legend></legend>
-						<label for="temp">Temperature (F)</label>
-						<p id="temp">{{vm.temp}}</p>
-						<label for="pressure">Pressure</label>
-						<p id="pressure">{{vm.pressure}}</p>
-						<label for="humidity">Humidity</label>
-						<p id="humidity">{{vm.humid}}</p>
-						<label for="low">Lowest Temp (F)</label>
-						<p id="low">{{vm.low}}</p>
-						<label for="high">Highest Temp (F)</label>
-						<p id="high">{{vm.high}}</p>
-						<label for="speed">Wind Speed</label>
-						<p id="speed">{{vm.speed}}</p>
+						<p id="temp">Temperature (F): {{vm.temp}}</p>
+						<p id="pressure">Pressure: {{vm.pressure}}</p>
+						<p id="humidity">Humidity: {{vm.humid}}</p>
+						<p id="low">Lowest Temp (F): {{vm.low}}</p>
+						<p id="high">Highest Temp (F): {{vm.high}}</p>
+						<p id="speed">Wind Speed: {{vm.speed}}</p>
 					</div>
 				</div>
 			</div>
@@ -71,6 +66,7 @@
 					<div class="panel-heading">Search History</div>
 					<div class="panel-body" ng-hide="vm.name === ''">
 						<table class="table table-striped">
+							<!-- The table history will be shown here -->
 							<tr ng-repeat="info in vm.history">
 								<td ng-show="!$first">{{info.place}}</td>
 								<td class="text-right" ng-show="!$first">{{info.dt}}</td>
