@@ -35,20 +35,27 @@
 		<div class="form-group">
 			<div class="col-sm-11">
 				<!-- Adding in the user input -->
-				<input type="text" class="form-control" ng-model="vm.placeInput">
+				<input type="text" 
+					class="form-control" 
+					ng-model="vm.placeInput"
+					ng-minlength="3" 
+					required>
 			</div>
 			<button type="button" class="btn btn-default" ng-click="vm.showWeather(vm.placeInput)">GO!</button>
 		</div>
 	</div>
 	<div class="row">
+		
+	</div>
+	<div class="row">
 		<div class="col-sm-6">
 			<div class="panel panel-default">
-				<div class="planel panel-primary">
+				<div class="panel-primary">
 					<div class="panel-heading">City Information</div>
 					<!-- This is where the weather will be displayed -->
 					<div class="panel-body" ng-hide="vm.name === ''">
-						<h2 class="text-right"><img ng-src='http://openweathermap.org/img/w/{{vm.icon}}.png' alt="Current weather is: {{vm.desc}}" style="width:15%;height:15%">{{vm.name}}</h2>
-						<h4 class="text-right">Lat/Long: {{vm.lat}}, {{vm.long}}</h4>
+						<h2 class="text-center"><img ng-src='http://openweathermap.org/img/w/{{vm.icon}}.png' alt="Current weather is: {{vm.desc}}" style="width:15%;height:15%">{{vm.name}}</h2>
+						<h4 class="text-center">Lat/Long: {{vm.lat}}, {{vm.long}}</h4>
 						<legend></legend>
 						<p id="temp">Temperature (F): {{vm.temp}}</p>
 						<p id="pressure">Pressure: {{vm.pressure}}</p>
@@ -62,7 +69,7 @@
 		</div>
 		<div class="col-sm-6">
 			<div class="panel panel-default">
-				<div class="planel panel-primary">
+				<div class="panel-primary">
 					<div class="panel-heading">Search History</div>
 					<div class="panel-body" ng-hide="vm.name === ''">
 						<table class="table table-striped">

@@ -23,7 +23,7 @@
                     q: place, 
                     units: 'imperial'
                 }
-        	}).then(function(result) { // make sure the data is good through toastr
+        	}).then(function(result) { // make sure the data is good through toastr from the server
                 if(typeof result.data === 'object') {
         	       defer.resolve(result.data);
                 } else {
